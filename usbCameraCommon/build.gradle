@@ -27,13 +27,17 @@ android {
     compileSdkVersion versionCompiler
    	buildToolsVersion versionBuildTool
 
+    lintOptions {
+          abortOnError false
+    }
+
    	compileOptions {
    		sourceCompatibility javaSourceCompatibility
    		targetCompatibility javaTargetCompatibility
    	}
 
     defaultConfig {
-        minSdkVersion 18
+        minSdkVersion 16
         targetSdkVersion versionTarget
 
     }
@@ -42,17 +46,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            jniDebuggable true
+        }
     }
 }
 
 dependencies {
-	api fileTree(dir: 'libs', include: ['*.jar'])
-
-	implementation "com.android.support:support-v4:${supportLibVersion}"
-	implementation "com.android.support:support-annotations:${supportLibVersion}"
-
-	implementation("com.serenegiant:common:${commonLibVersion}") {
-   		exclude module: 'support-v4'
-   	}
-	implementation project(':libuvccamera')
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:support-v4:${supportLibVersion}"
+    implementation "com.android.support:support-annotations:${supportLibVersion}"
+    implementation("com.serenegiant:common:${commonLibVersion}") {
+        exclude module: 'support-v4'
+    }
+    implementation project(':libuvccamera')
 }

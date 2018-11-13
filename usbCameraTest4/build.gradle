@@ -27,6 +27,11 @@ android {
 	compileSdkVersion versionCompiler
 	buildToolsVersion versionBuildTool
 
+	lintOptions {
+		abortOnError false
+	}
+
+
 	compileOptions {
 		sourceCompatibility javaSourceCompatibility
 		targetCompatibility javaTargetCompatibility
@@ -34,7 +39,7 @@ android {
 
     defaultConfig {
         applicationId "com.serenegiant.usbcameratest4"
-        minSdkVersion 18
+        minSdkVersion 16
 		targetSdkVersion versionTarget
 		versionCode 9
 		versionName "3.00"
